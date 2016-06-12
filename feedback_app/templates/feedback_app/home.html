@@ -1,0 +1,457 @@
+{% load staticfiles %}
+{% load blog_tags %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{% block title %}Главная страница{% endblock %} </title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'page' %}/css/style.css">
+  <link rel="stylesheet" href="{% static 'page' %}/css/owl.carousel.css">
+  <link rel="stylesheet" href="{% static 'page' %}/css/lightbox.css">
+
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+  <!--[if IE 9]>
+    <script src="js/media.match.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<!-- Start Header -->
+<header id="header">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 col-md-12">
+        <div class="logo pull-left">
+          <a href="#">
+            <img src="img/logo.png" alt="" class="dark">
+            <img src="img/logo-2.png" alt="" class="light">
+          </a>
+        </div>
+        <div class="navigation pull-right">
+          <nav class="navbar navbar-default">
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#intro">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#team">Team</a></li>
+              <li><a href="#skills">Skills</a></li>
+              <li><a href="#clients">Clients</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </div>
+        <i class="fa fa-bars toggle"></i>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- End Header -->
+
+<!-- Start Intro -->
+<section id="intro">
+  <div class="slider owl-carousel">
+    {% for slider in sliders %}
+    <div class="slide">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-7 col-md-7">
+            <h2>{{ slider.title }}</h2>
+            <h4>{{ slider.after_title }}</h4>
+            <p>{{ slider.text }}</p>
+            <a href="{{ slider.detail_url }}" class="btn btn-gray">Читать далее</a>
+          </div>
+          <div class="col-lg-5 col-md-5">
+            <img src="/media/{{ slider.image }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+<!-- End Intro -->
+
+<!-- Start About -->
+<section id="about">
+  <div class="container">
+    <div class="row">
+      <div class="preamble col-lg-12 col-md-12">
+        <h3>О <span class="color">нас</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      {% for service in services %}
+       <div class="feature text-{{ service.align }} col-lg-6 col-md-6">
+        <img src="/media/{{service.image }}">
+        <h5>{{ service.title }}</h5>
+         <p>{{ service.text }}</p>
+       </div>
+         {% endfor %}
+    </div>
+  </div>
+  <div class="skew_prepended graySection"></div>
+</section>
+<!-- End About -->
+
+<!-- Start Portfolio -->
+<section id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="preamble col-lg-12 col-md-12">
+        <div class="pull-left">
+          <h3>Наши <span class="color">работы</span></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+
+        <ul class="filters custom-list list-inline pull-right">
+        <li><a class="active" data-filter="*">Все</a></li>
+        {% for category in categories %}
+          <li><a data-filter="{{ category.title }}">{{ category.section }}</a></li>
+           {% endfor %}
+        </ul>
+      </div>
+
+      <div class="clearfix"></div>
+      <div  class = "proj">
+      <div class="projects-wrapper">
+           {% for project in projects %}
+        <div class="portfolio-single {{ project.category }} col-lg-4 col-md-4 col-sm-12 col-xs-12">
+          <div class="overlay">
+            <img src="media/{{ project.image }}" alt="">
+            <div class="overlay-shadow">
+              <div class="overlay-content">
+                <object data="{% static 'sitepylabs/img/zoom.svg' %}" type="image/svg+xml"></object>
+                <h5><a href="{{ project.detail_url }}">{{ project.text }}</a></h5>
+              </div>
+            </div>
+          </div>
+        </div>
+           {% endfor %}
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Portfolio -->
+
+<!-- Start Team -->
+<section id="team">
+  <div class="skew_prepended yellowSection"></div>
+  <div class="container">
+    <div class="row">
+      <div class="preamble col-lg-12 col-md-12">
+        <h3>Наша <span class="color">команда</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+    {% for worker in workers %}
+      <div class="member col-lg-3 col-md-3">
+        <div class="overlay">
+          <img src="/media/{{ worker.image }}" alt="">
+
+        </div>
+        <div class="skew_prepended skew_member whiteSection"></div>
+        <h4>{{ worker.name }}</h4>
+        <h5>{{ worker.position }}</h5>
+        <p>{{ worker.text }}</p>
+        <ul class="social custom-list list-inline">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-behance"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        </ul>
+      </div>
+         {% endfor %}
+    </div>
+  </div>
+</section>
+<!-- End Team -->
+
+<!-- Start Skills -->
+<section id="skills">
+  <div id="gradient"></div>
+  <div class="container">
+    <div class="row">
+      <div class="preamble col-lg-12 col-md-12">
+        <h3>Awesome <span class="color">Skills</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      <div class="progress col-lg-6 col-md-6">
+        <div class="progress-bar">
+          <span class="progress-title">Architecture Design</span>
+          <span class="progress-bar-outer" data-width="15">
+            <span class="progress-bar-inner"></span>
+          </span>
+        </div>
+        <div class="progress-percentage text-right">
+          <h5>78%</h5>
+        </div>
+      </div>
+      <div class="progress col-lg-6 col-md-6">
+        <div class="progress-percentage text-left">
+          <h5>44%</h5>
+        </div>
+        <div class="progress-bar">
+          <span class="progress-title progress-left">Contact with Client</span>
+          <span class="progress-bar-outer progress-bar-outer-right" data-width="44">
+            <span class="progress-bar-inner"></span>
+          </span>
+        </div>
+      </div>
+      <div class="progress col-lg-6 col-md-6">
+        <div class="progress-bar">
+          <span class="progress-title">Creative</span>
+          <span class="progress-bar-outer" data-width="87">
+            <span class="progress-bar-inner"></span>
+          </span>
+        </div>
+        <div class="progress-percentage text-right">
+          <h5>87%</h5>
+        </div>
+      </div>
+      <div class="progress col-lg-6 col-md-6">
+        <div class="progress-percentage text-left">
+          <h5>65%</h5>
+        </div>
+        <div class="progress-bar">
+          <span class="progress-title progress-left">Construction Plus</span>
+          <span class="progress-bar-outer progress-bar-outer-right" data-width="65">
+            <span class="progress-bar-inner"></span>
+          </span>
+        </div>
+      </div>
+      <div class="progress col-lg-6 col-md-6">
+        <div class="progress-bar">
+          <span class="progress-title">Services</span>
+          <span class="progress-bar-outer" data-width="66">
+            <span class="progress-bar-inner"></span>
+          </span>
+        </div>
+        <div class="progress-percentage text-right">
+          <h5>66%</h5>
+        </div>
+      </div>
+      <div class="progress col-lg-6 col-md-6">
+        <div class="progress-percentage text-left">
+          <h5>43%</h5>
+        </div>
+        <div class="progress-bar">
+          <span class="progress-title progress-left">Availability</span>
+          <span class="progress-bar-outer progress-bar-outer-right" data-width="43">
+            <span class="progress-bar-inner"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Skills -->
+
+<!-- Start Clients -->
+<section id="clients">
+  <div class="clients-top">
+    <div class="container">
+      <div class="row">
+        <div class="preamble col-lg-12 col-md-12">
+          <h3>Our <span class="color">Clients</span></h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="clients-bottom">
+    <div class="skew_prepended graySection"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12">
+          <div id="testimonials-slider" class="owl-carousel">
+            {% for client in clients %}
+                  <div class = "clientslide">
+            <img src="media/{{ client.image }}" alt="">
+                  </div>
+              {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Clients -->
+
+<!-- Start Blog -->
+<section id="blog">
+  <div class="container">
+    <div class="row">
+      <div class="preamble col-lg-12 col-md-12">
+        <h3>Наш <span class="color">блог</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+        {% blog_title blog %}
+    </div>
+  </div>
+</section>
+<!-- End Blog -->
+
+<section id="map-footer">
+  <div class="skew_prepended whiteSection"></div>
+  <div id="map-contact"></div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="preamble col-lg-12 col-md-12">
+        <h3>Contact <span class="color">Us</span></h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <ul class="contact-list custom-list">
+          <li>
+            <object data="{% static 'page' %}/img/marker.svg" type="image/svg+xml"></object>
+            <div class="contact-info">
+              <h5>Where We Are</h5>
+              <p>Amphitheatre Parkway, Mountain View, <br>CA 94043 United States of America</p>
+            </div>
+          </li>
+          <li>
+            <object data="{% static 'page' %}/img/telefon.svg" type="image/svg+xml"></object>
+            <div class="contact-info">
+              <h5>Call Us</h5>
+              <p>+321 123 456 7<br>+24323 432 432 7</p>
+            </div>
+          </li>
+          <li>
+            <object data="{% static 'page' %}/img/website.svg" type="image/svg+xml"></object>
+            <div class="contact-info">
+              <h5>Visit Our Website</h5>
+              <p>www.website.com<br>www.yourwebsite.com</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 col-md-8">
+        {% block form %}
+      <form action="#" class="default-form">
+        <div class="row">
+          <div class="col-lg-6 col-md-6">
+            <input type="text" placeholder="Name">
+          </div>
+          <div class="col-lg-6 col-md-6">
+            <input type="text" placeholder="Email">
+          </div>
+          <div class="col-lg-12">
+            <input type="text" placeholder="Subject">
+          </div>
+          <div class="col-lg-12">
+            <textarea placeholder="Your Message"></textarea>
+          </div>
+          <div class="col-lg-12 text-right">
+            <button class="btn btn-contact">Send Message</button>
+          </div>
+        </div>
+      </form>
+{% endblock %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="skew_prepended graySection"></div>
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <div class="widget widget-about col-lg-3 col-md-3">
+          <h5 class="title-widget">About Us</h5>
+          <div class="sub-title">
+            <h5>Designed by Anashko</h5>
+            <p>Tailored design for 14 dolars</p>
+          </div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem possimus veniam dolor, ea molestias quis temporibus non minima assumenda ducimus quaerat cupiditate esse velit sed culpa at aliquam unde voluptates?</p>
+        </div>
+        <div class="widget col-lg-3 col-md-3">
+          <h5 class="title-widget">Recent Post</h5>
+          <ul class="list custom-list">
+            <li>
+              <h5><a href="#">Lorem ipsum dolor sit amet</a></h5>
+              <p>On Blog Title Amazing Title</p>
+            </li>
+            <li>
+              <h5><a href="#">Phasellus ornare</a></h5>
+              <p>On Blog Title Amazing Title</p>
+            </li>
+            <li>
+              <h5><a href="#">Nam congue vitae dapibus aliquet</a></h5>
+              <p>On Blog Title Amazing Title</p>
+            </li>
+          </ul>
+        </div>
+        <div class="widget col-lg-3 col-md-3">
+          <h5 class="title-widget">Archives</h5>
+          <ul class="list custom-list">
+            <li>
+              <h5><a href="#">Donec venenatis, turpis vel hendrerit</a></h5>
+              <p>On Blog Title Amazing Title</p>
+            </li>
+            <li>
+              <h5><a href="#">Tsit amet consectetur</a></h5>
+              <p>On Blog Title Amazing Title</p>
+            </li>
+          </ul>
+        </div>
+        <div class="widget col-lg-3 col-md-3">
+          <h5 class="title-widget">Instagram</h5>
+          <ul class="instagram custom-list">
+            <li><a href="#"><img src="img/twitter-1.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/twitter-2.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/twitter-4.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/twitter-3.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/twitter-5.jpg" alt=""></a></li>
+            <li><a href="#"><img src="img/twitter-6.jpg" alt=""></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyrights">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="pull-left">
+            <p>2015 Anashko Design. All rights Reserved.</p>
+          </div>
+          <div class="pull-right">
+            <ul class="social custom-list list-inline">
+              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+              <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="{% static 'page' %}/js/jquery-2.1.4.min.js"></script>
+<script src="{% static 'page' %}/js/jquery.viewport.js"></script>
+<script src="{% static 'page' %}/js/scripts.js"></script>
+<script src="{% static 'page' %}/js/jquery-ui.min.js"></script>
+<script src='{% static 'page' %}/js/owl.carousel.min.js'></script>
+<script src="{% static 'page' %}/js/gmap3.min.js"></script>
+<script src="{% static 'page' %}/js/isotope.pkgd.min.js"></script>
+<script src="{% static 'page' %}/js/jquery.nav.js"></script>
+<script src="{% static 'page' %}/js/lightbox.js"></script>
+
+</body>
+</html>

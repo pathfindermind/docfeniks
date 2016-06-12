@@ -1,0 +1,151 @@
+/* HEADER */
+
+#header {
+  position: fixed;
+  padding: 35px 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999999;
+  background: @yellow;
+  transition: .2s ease-in;
+
+  @media (max-width: @screen-md) {
+    position: absolute;
+    padding: 20px 0;
+    background: @gray;
+
+    .logo img {
+
+      &.dark {
+        display: none;
+      }
+
+      &.light {
+        display: block;
+      }
+    }
+  }
+
+  .light {
+    display: none;
+  }
+
+  &.active {
+    padding: 10px 0px 6px 0;
+    background: @gray;
+    transition: .2s ease-in;
+    box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.4);
+
+    .logo img {
+      height: 40px;
+
+      &.dark {
+        display: none;
+      }
+
+      &.light {
+        display: block;
+      }
+    }
+
+    nav {
+      margin: 8px 0px 10px 0;
+      min-height: 0;
+
+      ul li {
+        
+        &.current a {
+          color: @yellow;
+        }
+      
+        a {
+          color: @white;
+          border-left-color: @yellow;
+        }
+      }
+    }
+  }
+
+  .toggle {
+    display: none;
+    cursor: pointer;
+    color: @white;
+
+    @media (max-width: @screen-md) {
+      position: absolute;
+      right: 15px;
+      top: 10px;
+      font-size: 21px;
+      display: block;
+    }
+  }
+
+  .navigation {
+    position: relative;
+
+    @media (max-width: @screen-md) {
+      float: none !important;
+    }
+  }
+
+  nav {
+  	margin: 20px 0 0 0;
+  	position: relative;
+    background: transparent;
+    border: none;
+
+    @media (max-width: @screen-md) {
+      margin: 0;
+      text-align: center;
+      display: none;
+    }
+
+  	ul {
+  		position: relative;
+
+      @media (max-width: @screen-md) {
+        display: inline-block;
+        border-left: 1px solid @yellow;
+        margin: 50px auto 0 auto;
+        float: none !important;
+      }
+
+  		li {
+  			padding: 0;
+  			margin: 0;
+
+        @media (max-width: @screen-md) {
+          padding: 5px 10px;
+          display: block;
+          float: none;
+        }
+
+  			&:first-child a {
+  				border-left: none;
+  			}
+
+  			a {
+  				padding: 2px 15px 2px 15px;
+          text-transform: uppercase;
+          font-size: 13px;
+  				border-left: 1px solid @gray;
+          color: @gray;
+
+          &:hover {
+            color: @white;
+          }
+
+          @media (max-width: @screen-md) {
+            color: @white;
+            text-align: left;
+
+            &:hover {
+              color: @yellow;
+            }
+          }
+  			}
+  		}
+  	}
+  }
+}

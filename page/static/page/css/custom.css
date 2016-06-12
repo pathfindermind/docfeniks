@@ -1,0 +1,15 @@
+#intro h2 {
+    font-size: 90px;
+}
+
+#id_captcha_1 {
+  width: 30%;
+}
+
+#button-form {
+  float: right;
+}
+
+#button-contact {
+  float: left;
+}

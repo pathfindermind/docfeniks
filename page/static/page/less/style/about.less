@@ -1,0 +1,69 @@
+/* ABOUT */
+
+#about {
+	position: relative;
+	padding: 90px 0 60px 0;
+	background: @gray;
+
+	.skew_prepended {
+		top: -26px;
+	}
+
+	.preamble {
+		z-index: 999999;
+
+		h3 {
+			color: @white;
+
+			span {
+				color: @yellow;
+			}
+		}
+
+		p {
+			color: @white;
+		}
+	}
+
+	.feature {
+		position: relative;
+		margin-bottom: 30px;
+
+		h5 {
+			margin-bottom: 15px;
+			color: @yellow;
+			font-size: 17px;
+		}
+
+		p {
+			color: @white;
+		}
+
+		object {
+			margin-bottom: 2px;
+			height: 64px;
+		}
+
+		&.text-left {
+
+			p {
+				padding: 0 50px 0 0;
+			}
+		}
+
+		&.text-right {
+
+			@media (max-width: @screen-md) {
+				text-align: left !important;
+			}
+
+			p {
+				padding: 0 0 0 50px;
+
+				@media (max-width: @screen-md) {
+					padding-left: 0;
+				}
+			}
+		}
+	}
+}

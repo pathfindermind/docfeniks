@@ -1,0 +1,94 @@
+{% load staticfiles %}
+{% load feedbacktags %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <title>{% block title %}Главная страница{% endblock %} </title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'page' %}/css/style.css">
+  <link rel="stylesheet" href="{% static 'page' %}/css/owl.carousel.css">
+  <link rel="stylesheet" href="{% static 'page' %}/css/lightbox.css">
+  <link rel="stylesheet" href="{% static 'page' %}/css/custom.css">
+
+  <!-- Google Fonts -->
+  <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+
+  <!--[if IE 9]>
+    <script src="js/media.match.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+
+<!-- Start Header -->
+<header id="header">
+
+</header>
+<!-- End Header -->
+
+
+<section id="contact">
+  <div class="container">
+    <div class="row">
+      <div class="preamble col-lg-12 col-md-12">
+        <h3>Система автоматизированного<span class="color"> </span></h3>
+        <p>расторжения контрактов.</p>
+      </div>
+      <div class="col-lg-4 col-md-4">
+        <ul class="contact-list custom-list">
+          <li>
+            <object data="{% static 'page' %}/img/marker.svg" type="image/svg+xml"></object>
+            <div class="contact-info">
+              <h5>Where We Are</h5>
+              <p>Amphitheatre Parkway, Mountain View, <br>CA 94043 United States of America</p>
+            </div>
+          </li>
+          <li>
+            <object data="{% static 'page' %}/img/telefon.svg" type="image/svg+xml"></object>
+            <div class="contact-info">
+              <h5>Call Us</h5>
+              <p>+321 123 456 7<br>+24323 432 432 7</p>
+            </div>
+          </li>
+          <li>
+            <object data="{% static 'page' %}/img/website.svg" type="image/svg+xml"></object>
+            <div class="contact-info">
+              <h5>Visit Our Website</h5>
+              <p>www.website.com<br>www.yourwebsite.com</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="col-lg-8 col-md-8">
+        <div class="js-form">
+        {% showfeedback %}
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="skew_prepended graySection"></div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script src="{% static 'page' %}/js/jquery-2.1.4.min.js"></script>
+<script src="{% static 'page' %}/js/jquery.viewport.js"></script>
+<script src="{% static 'page' %}/js/scripts.js"></script>
+<script src="{% static 'page' %}/js/jquery-ui.min.js"></script>
+<script src='{% static 'page' %}/js/owl.carousel.min.js'></script>
+<script src="{% static 'page' %}/js/gmap3.min.js"></script>
+<script src="{% static 'page' %}/js/isotope.pkgd.min.js"></script>
+<script src="{% static 'page' %}/js/jquery.nav.js"></script>
+<script src="{% static 'page' %}/js/lightbox.js"></script>
+<script src="{% static 'page' %}/js/feedback_form.js"></script>
+
+</body>
+</html>

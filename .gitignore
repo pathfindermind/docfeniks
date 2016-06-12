@@ -1,0 +1,11 @@
+*.pyc
+*.sql
+*.tar*
+*.zip
+*.rar
+*.sqlite3
+*/settings/local.py
+fabfile.py
+.idea/
+searchindex/
+/static/

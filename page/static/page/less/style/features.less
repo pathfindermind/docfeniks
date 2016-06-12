@@ -1,0 +1,55 @@
+/* FEATURES */
+
+#features {
+	position: relative;
+	padding: 10px 0 30px 0;
+	background: @white;
+
+	.features-list {
+		position: relative;
+
+		li {
+			position: relative;
+			margin-bottom: 38px;
+			transition: .2s ease-in;
+
+			&.active i {
+				background: @red;
+			}
+
+			&:hover i {
+				background: @red;
+			}
+
+			i {
+				position: absolute;
+				width: 64px;
+				text-align: center;
+				line-height: 64px;
+				height: 64px;
+				border-radius: 50%;
+				background: @gray-color;
+				color: @white;
+				font-size: 21px;
+				transition: .2s ease-in;
+			}
+
+			.feature-content {
+				padding-left: 80px;
+
+				h4 {
+					margin: 0 0 10px 0;
+				}
+
+				p {
+					margin: 0;
+					color: @gray;
+				}
+			}
+		} 
+	}
+
+	img {
+		margin: 0 auto;
+	}
+}
